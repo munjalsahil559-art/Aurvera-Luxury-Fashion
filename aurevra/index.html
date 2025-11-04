@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aurvera — Royal Fashion</title>
+  <style>
+    :root{
+      --gold:#d4af37;
+      --accent:#f403f0; /* bright magenta-accent (kept as vibrant luxury accent) */
+      --bg:#0b0b0b;
+      --muted:#bdb6ad;
+      --glass: rgba(255,255,255,0.04);
+      --max-width:1200px;
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;color:var(--muted);background:linear-gradient(180deg,#050505 0%,#0b0b0b 60%);}
+    a{color:inherit;text-decoration:none}
+
+    /* Container */
+    .wrap{max-width:var(--max-width);margin:0 auto;padding:28px}
+
+    /* NAV */
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:54px;height:54px;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--accent));box-shadow:0 6px 24px rgba(212,175,55,0.12);display:flex;align-items:center;justify-content:center;font-weight:700;color:#050505}
+    .brand h1{margin:0;font-size:18px;color:var(--gold);letter-spacing:1px}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav-links a{padding:8px 14px;border-radius:10px;transition:all .22s ease;font-weight:600}
+    .nav-links a:hover{background:rgba(255,255,255,0.02);color:var(--gold)}
+    .cta{background:linear-gradient(90deg,var(--gold),#e6c25a);padding:8px 14px;border-radius:12px;color:#050505;font-weight:700;box-shadow:0 6px 20px rgba(212,175,55,0.12)}
+
+    /* HERO */
+    .hero{position:relative;display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:48px 0;}
+    .hero::before{content:"";position:absolute;inset:0;background:url('hero-bg.jpg') center/cover no-repeat;opacity:0.22;pointer-events:none;}
+    .hero-left h2{margin:0;font-size:44px;line-height:1.02;color:#fff}
+    .hero-left p{color:var(--muted);margin-top:12px;font-size:16px}
+    .hero-actions{margin-top:22px;display:flex;gap:12px}
+    .btn{padding:12px 18px;border-radius:12px;font-weight:700;border:1px solid rgba(255,255,255,0.04);background:transparent}
+    .btn.primary{background:linear-gradient(90deg,var(--gold),#e6c25a);color:#050505}
+    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border-radius:16px;padding:22px;box-shadow:0 10px 30px rgba(10,10,10,0.6);border:1px solid rgba(255,255,255,0.03)}
+    .product-swatch{height:220px;border-radius:12px;background-image:linear-gradient(120deg,var(--gold),var(--accent));display:flex;align-items:flex-end;padding:18px;color:#050505;font-weight:700}
+
+    /* Collections */ */
+    .collections{padding:36px 0}
+    .collections-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+    .card{background:var(--glass);border-radius:14px;padding:16px;border:1px solid rgba(255,255,255,0.03);overflow:hidden}
+    .card h3{margin:8px 0 0 0;color:#fff}
+    .card p{margin:6px 0 0 0;color:var(--muted);font-size:14px}
+
+    /* Testimonials */
+    .testimonials{padding:36px 0}
+    .test-grid{display:flex;gap:14px;align-items:center}
+    .testimonial{flex:1;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:18px;border-radius:12px}
+    .quote{font-size:15px;color:var(--muted);line-height:1.5}
+    .author{display:flex;gap:10px;align-items:center;margin-top:12px}
+    .avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(180deg,var(--accent),var(--gold));display:inline-block}
+
+    /* Pricing */
+    .pricing{padding:36px 0}
+    .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+    .price-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:20px;border-radius:14px;border:1px solid rgba(255,255,255,0.03)}
+    .price{font-size:28px;color:#fff;font-weight:800}
+    .price small{display:block;color:var(--muted);font-size:12px}
+    .features{margin-top:12px;color:var(--muted)}
+
+    /* About & Footer */
+    .about{padding:28px 0;color:var(--muted)}
+    footer{border-top:1px solid rgba(255,255,255,0.03);padding:20px 0;margin-top:20px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+
+    /* Responsive */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr;}
+      .nav-links{display:none}
+      .wrap{padding:18px}
+    }
+
+    /* subtle animations */
+    .fade-up{opacity:0;transform:translateY(12px);animation:fadeUp .7s ease forwards}
+    @keyframes fadeUp{to{opacity:1;transform:none}}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand">
+        <div class="logo">A</div>
+        <div>
+          <h1>Aurvera</h1>
+          <p>Royal Fashion</p>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#collections">Collections</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#about">About</a>
+        <a class="cta" href="#collections">Shop</a>
+      </div>
+    </nav>
+
+    <!-- HERO / HOME -->
+    <section id="home" class="hero">
+      <div class="hero-left">
+        <h2 class="fade-up">Aurvera — where royalty meets runway.</h2>
+        <p class="fade-up" style="animation-delay:.1s">A curated collection of couture and ready-to-wear pieces crafted with artisanal detail and gilded finishes. Each piece carries the Aurvera signature — a legacy of tactile luxury.</p>
+        <div class="hero-actions fade-up" style="animation-delay:.2s">
+          <a class="btn primary" href="#collections">Explore Collections</a>
+          <a class="btn" href="#about">Our Story</a>
+        </div>
+      </div>
+
+      <aside class="hero-card fade-up" style="animation-delay:.3s">
+        <div class="product-swatch">Signature Aurora Coat</div>
+        <p style="margin-top:12px;color:var(--muted)">Limited edition — crafted with pure metallic threads and tailored silhouette.</p>
+        <div style="display:flex;justify-content:space-between;margin-top:12px;align-items:center">
+          <strong style="color:var(--gold)">From ₹49,999</strong>
+          <a class="btn" href="#pricing">Starting Prices</a>
+        </div>
+      </aside>
+    </section>
+
+    <!-- COLLECTIONS -->
+    <section id="collections" class="collections">
+      <div style="display:flex;justify-content:space-between;align-items:end;margin-bottom:12px">
+        <div>
+          <h2 style="color:#fff;margin:0">Collections</h2>
+          <p style="margin:6px 0 0 0;color:var(--muted)">Exquisite seasonal drops — hand-finished, limited runs.</p>
+        </div>
+        <div style="color:var(--muted);font-size:14px">Collections start from ₹49,999</div>
+      </div>
+
+      <div class="collections-grid">
+        <article class="card fade-up" style="animation-delay:.12s">
+          <div style="height:160px;border-radius:10px;background:linear-gradient(120deg,var(--gold),var(--accent));display:flex;align-items:end;padding:12px;color:#050505;font-weight:800"><img src="https://i.imgur.com/3qZQ7qS.jpeg" alt="Aurora Evening" style="width:100%;height:160px;object-fit:cover;border-radius:10px;">
+          <h3>Aurora Evening</h3>
+          <p>Opulent gowns with metallic threadwork.</p>
+        </article>
+
+        <article class="card fade-up" style="animation-delay:.18s">
+          <div style="height:160px;border-radius:10px;background:linear-gradient(120deg,var(--accent),#9b6b12);display:flex;align-items:end;padding:12px;color:#050505;font-weight:800"><img src="https://i.imgur.com/GLuYt8u.jpeg" alt="Gilded Tailoring" style="width:100%;height:160px;object-fit:cover;border-radius:10px;">
+          <h3>Gilded Tailoring</h3>
+          <p>Structured silhouettes for modern aristocracy.</p>
+        </article>
+
+        <article class="card fade-up" style="animation-delay:.24s">
+          <div style="height:160px;border-radius:10px;background:linear-gradient(120deg,#1f1b1b,var(--gold));display:flex;align-items:end;padding:12px;color:#050505;font-weight:800"><img src="https://i.imgur.com/Td3j9mO.jpeg" alt="Heritage Knit" style="width:100%;height:160px;object-fit:cover;border-radius:10px;">
+          <h3>Heritage Knit</h3>
+          <p>Cashed blends with signature jacquard patterns.</p>
+        </article>
+
+        <article class="card fade-up" style="animation-delay:.30s">
+          <div style="height:160px;border-radius:10px;background:linear-gradient(120deg,var(--gold),#2f2f2f);display:flex;align-items:end;padding:12px;color:#050505;font-weight:800"><img src="https://i.imgur.com/3qZQ7qS.jpeg" alt="Accessories" style="width:100%;height:160px;object-fit:cover;border-radius:10px;">
+          <h3>Accessories</h3>
+          <p>Handcrafted belts, clutches and jeweled pins.</p>
+        </article>
+        <div class="collection-item"><img src="https://i.imgur.com/3qZQ7qS.jpeg" alt="White Black Tux" /><h3>Royal Tuxedo</h3><p>Hand-embroidered luxury tux.</p></div>
+  <div class="collection-item"><img src="https://i.imgur.com/GLuYt8u.jpeg" alt="Navy Suit" /><h3>Imperial Navy Suit</h3><p>Three-piece bespoke craftsmanship.</p></div>
+  <div class="collection-item"><img src="https://i.imgur.com/Td3j9mO.jpeg" alt="Golden Sherwani" /><h3>Heritage Sherwani</h3><p>Golden woven fabric with regal patterns.</p></div>
+</div>
+</section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="testimonials">
+      <h2 style="color:#fff">Testimonials</h2>
+      <p style="color:var(--muted);margin-top:6px">Voices from patrons and critics.</p>
+      <div class="test-grid" style="margin-top:12px">
+        <div class="testimonial fade-up" style="animation-delay:.12s">
+          <p class="quote">“A masterclass in contemporary opulence — Aurvera redefines evening wear.”</p>
+          <div class="author">
+            <div class="avatar"></div>
+            <div>
+              <strong style="color:#fff">Evelyn Rowe</strong>
+              <div style="font-size:12px;color:var(--muted)">Fashion Editor — Vogue Maison</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial fade-up" style="animation-delay:.18s">
+          <p class="quote">“The tailoring is impeccable. Each stitch speaks of craftsmanship and care.”</p>
+          <div class="author">
+            <div class="avatar"></div>
+            <div>
+              <strong style="color:#fff">Marcus Hale</strong>
+              <div style="font-size:12px;color:var(--muted)">Collector & Stylist</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="pricing">
+      <h2 style="color:#fff;">Pricing</h2>
+      <p style="color:var(--muted);margin-top:6px">Collections start from ₹49,999. Bespoke pieces priced on request.</p>
+
+      <div class="pricing-grid" style="margin-top:12px">
+        <div class="price-card fade-up" style="animation-delay:.12s">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <h3 style="margin:0;color:#fff">Signature</h3>
+              <small style="color:var(--muted)">Ready-to-wear selections</small>
+            </div>
+            <div class="price">₹49,999</div>
+          </div>
+          <div class="features">
+            <ul>
+              <li>Limited runs</li>
+              <li>Free global shipping</li>
+              <li>2-year craftsmanship warranty</li>
+            </ul>
+          </div>
+          <div style="margin-top:12px"><a class="btn primary" href="#collections">Shop Signature</a></div>
+        </div>
+
+        <div class="price-card fade-up" style="animation-delay:.18s">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <h3 style="margin:0;color:#fff">Bespoke</h3>
+              <small style="color:var(--muted)">Made-to-measure & customization</small>
+            </div>
+            <div class="price">On Request</div>
+          </div>
+          <div class="features">
+            <ul>
+              <li>Personal fittings</li>
+              <li>Custom materials</li>
+              <li>Priority production</li>
+            </ul>
+          </div>
+          <div style="margin-top:12px"><a class="btn" href="#about">Request Bespoke</a></div>
+        </div>
+
+        <div class="price-card fade-up" style="animation-delay:.24s">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <h3 style="margin:0;color:#fff">Accessories</h3>
+              <small style="color:var(--muted)">Belts, clutches & more</small>
+            </div>
+            <div class="price">₹6,999+</div>
+          </div>
+          <div class="features">
+            <ul>
+              <li>Hand-finished</li>
+              <li>Limited editions</li>
+            </ul>
+          </div>
+          <div style="margin-top:12px"><a class="btn" href="#collections">Browse</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHECKOUT FORM -->
+    <section id="checkout" class="checkout" style="padding:36px 0;color:var(--muted)">
+      <h2 style="color:#fff">Order & Measurement Request</h2>
+      <p style="margin-top:6px;color:var(--muted)">Provide your address and payment preference. Our stylist will contact you personally.</p>
+      <form style="margin-top:18px;display:grid;gap:14px;max-width:600px">
+        <input type="text" placeholder="Full Name" required style="padding:12px;border-radius:12px;background:var(--glass);border:1px solid rgba(255,255,255,0.06);color:#fff"/>
+        <input type="text" placeholder="Phone Number" required style="padding:12px;border-radius:12px;background:var(--glass);border:1px solid rgba(255,255,255,0.06);color:#fff"/>
+        <input type="text" placeholder="Full Address" required style="padding:12px;border-radius:12px;background:var(--glass);border:1px solid rgba(255,255,255,0.06);color:#fff"/>
+        <select required style="padding:12px;border-radius:12px;background:var(--glass);border:1px solid rgba(255,255,255,0.06);color:#fff">
+          <option disabled selected>Select Payment Method</option>
+          <option>UPI</option>
+          <option>Credit / Debit Card</option>
+          <option>Net Banking</option>
+          <option>Pay On Boutique Visit</option>
+        </select>
+        <button class="btn primary" type="submit" style="width:max-content">Submit Request</button>
+      </form>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+      <h2 style="color:#fff">About Aurvera</h2>
+      <p style="margin-top:8px;color:var(--muted)">Founded to blend traditional artisanal methods with contemporary silhouettes, Aurvera crafts collections that feel timeless yet distinctively modern. Each capsule is produced in limited quantities to preserve rarity and quality.</p>
+
+      <div style="display:flex;gap:18px;margin-top:14px;flex-wrap:wrap">
+        <div style="flex:1;min-width:220px">
+          <h4 style="color:#fff;margin:6px 0">Our Philosophy</h4>
+          <p style="color:var(--muted)">Sustainability through scarcity — we focus on materials that age gracefully and production that values hands over machines.</p>
+        </div>
+        <div style="flex:1;min-width:220px">
+          <h4 style="color:#fff;margin:6px 0">Craftsmanship</h4>
+          <p style="color:var(--muted)">Collaborations with master tailors and embroiderers to ensure every piece is a legacy item.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        <strong style="color:var(--gold)">Aurvera</strong>
+        <div style="font-size:13px;color:var(--muted);margin-top:6px">Fine Fashion • Limited Editions</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:13px;color:var(--muted)">© Aurvera 2024</div>
+      </div>
+      <div class="footer-contact">
+    <h4>Contact & Visit Us</h4>
+    <p>Aurvera Luxury Fashion House</p>
+    <p>21/7 Aureate Boulevard, Connaught Place, New Delhi, India</p>
+    <p>Email: support@aurvera.com | Phone: +91 98989 98989</p>
+  </div>
+
+  <div class="payment-options">
+    <h4>Payment Methods</h4>
+    <p>We Accept:</p>
+    <ul>
+      <li>Credit / Debit Cards (Visa, MasterCard, Amex)</li>
+      <li>UPI / Wallets (PhonePe, Google Pay, Paytm)</li>
+      <li>Net Banking</li>
+      <li>Cash on Boutique Visit</li>
+    </ul>
+  </div>
+
+</footer>
+  </div>
+
+  <script>
+    // Simple fade-up on load for elements with .fade-up
+    document.addEventListener('DOMContentLoaded',()=>{
+      const els = document.querySelectorAll('.fade-up');
+      els.forEach((el,i)=>{ el.style.animationDelay = (parseFloat(getComputedStyle(el).animationDelay)||0)+'s'; el.classList.add('visible'); });
+      // small intersection observer for nicer reveal
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{ if(e.isIntersecting){ e.target.style.opacity = 1; e.target.style.transform = 'none'; io.unobserve(e.target);} });
+      },{threshold:0.12});
+      document.querySelectorAll('.fade-up').forEach(el=>{ io.observe(el); });
+
+      // Smooth anchor scrolling
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click',e=>{
+          const href = a.getAttribute('href');
+          if(href.length>1){ e.preventDefault(); document.querySelector(href).scrollIntoView({behavior:'smooth',block:'start'}); }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
